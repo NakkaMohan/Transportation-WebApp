@@ -1,11 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sunny Express Transportation | Premium NYC Taxi Service</title>
-        <link rel="stylesheet" href="css/home.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunny Express Transportation | Premium NYC Taxi Service</title>
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #fff; /* White text for black background */
+            background-color: #000; /* Black background */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: #000; /* Black background */
+            box-shadow: 0 2px 10px rgba(255, 165, 0, 0.2); /* Yellow shadow */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #FFA500;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff; /* White text */
+            transition: color 0.3s;
+        }
+
+        .nav-links a.active {
+            color: #FFA500; /* Taxi yellow for active link */
+            font-weight: bold;
+            border-bottom: 2px solid #FFA500;
+            padding-bottom: 5px;
+        }
+
+        .nav-phone {
+            background: #FFA500; /* Taxi yellow button */
+            color: #000; /* Black text */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .nav-phone:hover {
+            background: #e59400; /* Darker yellow */
+        }
+
+        /* Hero Image Below Navbar */
+        .hero-image-section {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .hero-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8); /* Darken the image slightly */
+        }
+
+        /* ===== TAB BUTTONS ===== */
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin: 2rem auto 0;
+            max-width: 800px;
+            background: #000; /* Black background */
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: #333; /* Dark gray for inactive tabs */
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #fff; /* White text */
+        }
+
+        .tab-btn:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .tab-btn:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tab-btn.active {
+            background: #FFA500; /* Taxi yellow for active tab */
+            color: #000; /* Black text */
+        }
+
+        /* ===== TAB CONTENT ===== */
+        .tab-content {
+            display: none;
+            padding: 3rem 5%;
+            background: #111; /* Dark black-gray background */
+            color: #fff; /* White text */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.2); /* Yellow shadow */
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* ===== BOOKING FORM ===== */
+        .booking-widget {
+            background: #222; /* Dark gray background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            color: #fff; /* White text */
+            border: 1px solid #FFA500; /* Yellow border */
+        }
+
+        /* ===== CONTACT INFO ===== */
+        .contact-info-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #FFA500;
+        }
+
+        .contact-text h3 {
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .contact-text p, .contact-text a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .contact-text a:hover {
+            color: #FFA500;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            background: #333; /* Darker gray input background */
+            color: #fff; /* White text */
+            border: 1px solid #FFA500; /* Yellow border */
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #FFA500; /* Yellow focus border */
+            box-shadow: 0 0 0 2px rgba(255,165,0,0.2);
+            box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); /* Yellow glow */
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Error states */
+        .form-group input.error,
+        .form-group select.error {
+            border-color: #ff4500;
+        }
+
+        .error-message {
+            color: #ff4500;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Submit button */
+        .book-now-btn {
+            background: #FFA500; /* Taxi yellow button */
+            color: #000; /* Black text */
+            border: none;
+            padding: 12px 25px;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .book-now-btn:hover {
+            background: #e59400; /* Darker yellow */
+        }
+
+        .book-now-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        .spinner.hidden {
+            display: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== NOTIFICATIONS ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 6px;
+            color: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .notification.success {
+            background: #4CAF50;
+        }
+
+        .notification.error {
+            background: #ff4500;
+        }
+
+        .notification .icon {
+            font-weight: bold;
+        }
+
+        .notification.fade-out {
+            animation: fadeOut 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; transform: translate(-50%, -20px); }
+        }
+
+        /* Emergency booking option */
+        .backup-booking {
+            margin-top: 1.5rem;
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .backup-btn {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .backup-btn:hover {
+            background: #218838;
+        }
+
+        /* ===== OTHER SECTIONS ===== */
+        .highlights {
+            display: flex;
+            justify-content: center;
+            padding: 3rem 5%;
+            gap: 2rem;
+            background: #000; /* Black background */
+            flex-wrap: wrap;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            background: #FFA500; /* Taxi yellow card */
+            color: #000; /* Black text */
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3); /* Yellow shadow */
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #000; /* Black icon */
+        }
+
+        .services-preview {
+            padding: 4rem 5%;
+            text-align: center;
+            background: #000; /* Black background */
+        }
+
+        .services-preview h2 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .services-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background: #FFA500; /* Taxi yellow card */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            transition: transform 0.3s;
+            color: #000; /* Black text */
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3); /* Yellow shadow */
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 165, 0, 0.5); /* Stronger yellow shadow */
+        }
+
+        .service-card a {
+            color: #000; /* Black text for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .company-info {
+            display: flex;
+            padding: 4rem 5%;
+            gap: 3rem;
+            align-items: center;
+            background: #111; /* Dark black-gray background */
+            color: #fff; /* White text */
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-content h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #FFA500; /* Yellow heading */
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .benefits-list li {
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+            color: #fff; /* White text */
+        }
+
+        .info-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .info-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 2px solid #FFA500; /* Yellow border */
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #000; /* Black background */
+            color: #fff; /* White text */
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #FFA500; /* Yellow links */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e59400; /* Darker yellow */
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            color: #FFA500; /* Yellow icons */
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .footer-social a:hover {
+            color: #e59400; /* Darker yellow */
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa; /* Light gray text */
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin: 1rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-image-section {
+                height: 300px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .company-info {
+                flex-direction: column;
+            }
+            
+            .info-image {
+                margin-top: 2rem;
+                order: -1;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -20,13 +610,13 @@
             <li><a href="#">Contact</a></li>
         </ul>
         <div class="nav-cta">
-            <a href="tel:917-708-4133" class="nav-phone">Call: 917-708-4133</a>
+            <a href="tel:917-708-4133" class="nav-phone">Contact US</a>
         </div>
     </nav>
 
     <!-- Hero Image Below Navbar -->
     <div class="hero-image-section">
-        <img src="assets/images/SET5.jpeg" alt="Luxury taxi vehicle">
+        <img src="assets/images/SET4.jpeg" alt="Luxury taxi vehicle">
     </div>
 
     <!-- Tab Buttons -->
@@ -258,7 +848,8 @@
             // Tab functionality
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
-            
+            const contactNavLink = document.querySelector('.nav-phone');
+
             // Initially hide all tab contents
             tabContents.forEach(content => content.classList.remove('active'));
             
@@ -273,6 +864,22 @@
                     const tabId = button.getAttribute('data-tab');
                     document.getElementById(`${tabId}-tab`).classList.add('active');
                 });
+            });
+
+            // Handle "Contact Us" click in the navbar
+            contactNavLink.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor behavior
+
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Activate the "Contact Us" tab
+                document.querySelector('[data-tab="contact"]').classList.add('active');
+                document.getElementById('contact-tab').classList.add('active');
+
+                // Scroll to the contact section
+                document.getElementById('contact-tab').scrollIntoView({ behavior: 'smooth' });
             });
 
             const bookingForm = document.getElementById('booking-form');
