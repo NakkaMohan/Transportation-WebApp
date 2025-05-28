@@ -162,18 +162,31 @@
         /* ===== BOOKING FORM ===== */
         .booking-widget {
             background: #222; /* Dark gray background */
-            padding: 2rem;
+            padding: 1.5rem; /* Reduced padding */
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            margin: 0 auto;
+            margin: 1rem auto; /* Reduced margin */
             color: #fff; /* White text */
-            border: 1px solid #FFA500; /* Yellow border */
+            border: 1px solid #ffa6005a; /* Yellow border */
+        }
+
+        .booking-widget .form-group {
+            margin-bottom: 0.8rem; /* Reduced margin between form groups */
+        }
+
+        .booking-widget .form-row {
+            gap: 0.5rem; /* Reduced gap between date and time fields */
+        }
+
+        .booking-widget .book-now-btn {
+            padding: 10px 20px; /* Reduced button padding */
+            font-size: 1rem; /* Slightly smaller font size */
         }
 
         /* ===== CONTACT INFO ===== */
         .contact-info-container {
-            background: white;
+            background: #222;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -213,37 +226,39 @@
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem; /* Reduced margin between form groups */
             position: relative;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem; /* Reduced margin below labels */
             font-weight: 500;
             color: #333;
+            font-size: 0.9rem; /* Slightly smaller label size */
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 8px 12px; /* Reduced padding (top/bottom: 8px, left/right: 12px) */
+            border: 1px solid #ffa60074; /* Yellow border */
+            border-radius: auto; /* Slightly reduced border radius */
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 0.95rem; /* Slightly smaller font size */
             transition: border-color 0.3s;
             background: #333; /* Darker gray input background */
             color: #fff; /* White text */
-            border: 1px solid #FFA500; /* Yellow border */
+            height: 36px; /* Fixed height for consistency */
+            line-height: 1.2; /* Reduced line height */
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #FFA500; /* Yellow focus border */
-            box-shadow: 0 0 0 2px rgba(255,165,0,0.2);
+            border-color: #ffa60069; /* Yellow focus border */
+            box-shadow: 0 0 0 1px rgba(255,165,0,0.2);
             box-shadow: 0 0 5px rgba(255, 165, 0, 0.5); /* Yellow glow */
         }
 
@@ -498,7 +513,7 @@
             width: 100%;
             height: auto;
             display: block;
-            border: 2px solid #FFA500; /* Yellow border */
+            border: 2px solid #ffa60017; /* Yellow border */
         }
 
         /* ===== FOOTER ===== */
@@ -710,12 +725,7 @@
                 </form>
                 
                 <!-- Backup Booking Option -->
-                <div class="backup-booking">
-                    <p>Need immediate assistance?</p>
-                    <a href="tel:917-708-4133" class="backup-btn">
-                        📞 CALL NOW: 917-708-4133
-                    </a>
-                </div>
+                
             </div>
         </div>
     </section>
