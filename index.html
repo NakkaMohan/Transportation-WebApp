@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sunny Express Transportation | Premium NYC Taxi Service</title>
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">🚖</span>
+            <span>Sunny Express Transportation</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+            <a href="tel:917-708-4133" class="nav-phone">Call: 917-708-4133</a>
+        </div>
+    </nav>
+
+    <!-- Hero Image Below Navbar -->
+    <div class="hero-image-section">
+        <img src="assets/images/SET5.jpeg" alt="Luxury taxi vehicle">
+    </div>
+
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+        <button class="tab-btn" data-tab="booking">Book a Ride</button>
+        <button class="tab-btn" data-tab="contact">Contact Us</button>
+    </div>
+
+    <!-- Booking Section - Initially hidden -->
+    <section class="tab-content" id="booking-tab">
+        <div class="section-title">
+            <h1>Premium Transportation Services in NYC</h1>
+            <p>Reliable airport transfers, executive rides, and medical transport</p>
+        </div>
+        
+        <!-- Fixed Booking Widget -->
+        <div class="booking-widget">
+            <div class="booking-form" id="instant-booking">
+                <!-- Fixed Form with Proper FormSubmit Configuration -->
+                <form 
+                    action="https://formsubmit.co/nakkamohan20@gmail.com" 
+                    method="POST"
+                    id="booking-form"
+                >
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="🚖 New Booking Request - Sunny Express">
+                    <input type="hidden" name="_autoresponse" value="Thank you for booking with Sunny Express! We'll contact you shortly to confirm your ride.">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://sunnyexpress.com/thank-you">
+                    <input type="hidden" name="_cc" value="5513447198@tmomail.net">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <!-- Pickup Information -->
+                    <div class="form-group">
+                        <label for="pickup">Pickup Location*</label>
+                        <input type="text" id="pickup" name="Pickup_Location" required 
+                               placeholder="Enter pickup address or landmark">
+                    </div>
+                    
+                    <!-- Dropoff Information -->
+                    <div class="form-group">
+                        <label for="dropoff">Dropoff Location*</label>
+                        <input type="text" id="dropoff" name="Dropoff_Location" required 
+                               placeholder="Enter destination address">
+                    </div>
+                    
+                    <!-- Date & Time -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date*</label>
+                            <input type="date" id="date" name="Pickup_Date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time*</label>
+                            <input type="time" id="time" name="Pickup_Time" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Selection -->
+                    <div class="form-group">
+                        <label for="service-type">Service Type</label>
+                        <select id="service-type" name="Service_Type">
+                            <option value="">Select Service (Optional)</option>
+                            <option value="Airport Transfer">Airport Transfer</option>
+                            <option value="Executive Ride">Executive Ride</option>
+                            <option value="Medical Transport">Medical Transport</option>
+                            <option value="Hourly Service">Hourly Service</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="phone">Your Phone Number*</label>
+                        <input type="tel" id="phone" name="Phone_Number" required 
+                               placeholder="(123) 456-7890">
+                        <div class="error-message" id="phone-error"></div>
+                    </div>
+                    
+                    <!-- Additional Notes -->
+                    <div class="form-group">
+                        <label for="notes">Special Requests (Optional)</label>
+                        <input type="text" id="notes" name="Special_Requests" 
+                               placeholder="Any special instructions or requests">
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="book-now-btn" id="submit-btn">
+                        <span id="btn-text">Book Now - Get Instant Confirmation</span>
+                        <span class="spinner hidden" id="spinner"></span>
+                    </button>
+                </form>
+                
+                <!-- Backup Booking Option -->
+                <div class="backup-booking">
+                    <p>Need immediate assistance?</p>
+                    <a href="tel:917-708-4133" class="backup-btn">
+                        📞 CALL NOW: 917-708-4133
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Initially hidden -->
+    <section class="tab-content" id="contact-tab">
+        <div class="section-title">
+            <h1>Contact Sunny Express</h1>
+            <p>Get in touch with us for any questions or special requests</p>
+        </div>
+        
+        <div class="contact-info-container">
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <a href="tel:917-708-4133">917-708-4133</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:sunnyexpress1225@gmail.com">sunnyexpress1225@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <div class="contact-text">
+                        <h3>Service Area</h3>
+                        <p>All NYC boroughs - Manhattan, Brooklyn, Queens, Bronx, Staten Island</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div class="contact-text">
+                        <h3>Hours</h3>
+                        <p>24/7 Service - Available anytime, even holidays</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Highlights -->
+    <section class="highlights">
+        <div class="highlight-card">
+            <div class="highlight-icon">🏆</div>
+            <h3>5-Star Rated</h3>
+            <p>Rated 4.9/5 by 500+ customers</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">⏱️</div>
+            <h3>24/7 Service</h3>
+            <p>Available anytime, even holidays</p>
+        </div>
+        <div class="highlight-card">
+            <div class="highlight-icon">🛡️</div>
+            <h3>Fully Licensed</h3>
+            <p>TLC-licensed vehicles & drivers</p>
+        </div>
+    </section>
+
+    <!-- Key Services Preview -->
+    <section class="services-preview">
+        <h2>Our Popular Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Airport Transfers</h3>
+                <p>JFK • LaGuardia • Newark</p>
+                <a href="#airport">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <h3>Corporate Rides</h3>
+                <p>Executives & business meetings</p>
+                <a href="#executive">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <h3>Medical Transport</h3>
+                <p>Doctors & hospital visits</p>
+                <a href="#medical">Learn More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Info Section -->
+    <section class="company-info">
+        <div class="info-content">
+            <h2>Why Choose Sunny Express</h2>
+            <ul class="benefits-list">
+                <li>✓ 100% on-time pickups with flight tracking</li>
+                <li>✓ Professional, English-speaking drivers</li>
+                <li>✓ Clean, late-model vehicles</li>
+                <li>✓ Fixed pricing with no hidden fees</li>
+                <li>✓ 24/7 customer support</li>
+            </ul>
+        </div>
+        <div class="info-image">
+            <img src="assets/images/car.jpeg" alt="Professional driver">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Sunny Express Transportation</span>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><span>📱</span></a>
+                <a href="#"><span>📧</span></a>
+                <a href="#"><span>💬</span></a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 Sunny Express Transportation. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Initially hide all tab contents
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+
+            const bookingForm = document.getElementById('booking-form');
+            const phoneInput = document.getElementById('phone');
+            const dateInput = document.getElementById('date');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const spinner = document.getElementById('spinner');
+            const phoneError = document.getElementById('phone-error');
+
+            // Set minimum date to today
+            const today = new Date();
+            const todayString = today.toISOString().split('T')[0];
+            dateInput.min = todayString;
+            dateInput.value = todayString;
+
+            // Real-time phone number formatting
+            phoneInput.addEventListener('input', function(e) {
+                const formatted = formatPhoneNumber(this.value);
+                this.value = formatted;
+                
+                // Clear error when typing valid number
+                if (validatePhone(this.value)) {
+                    clearError(phoneInput);
+                }
+            });
+
+            // Form submission handler - SIMPLIFIED for FormSubmit
+            bookingForm.addEventListener('submit', function(e) {
+                // Basic validation only
+                if (!validateForm()) {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // Show loading state
+                showLoading(true);
+                
+                // Let the form submit naturally to FormSubmit
+                // FormSubmit will handle the redirect and email sending
+            });
+
+            // ===== VALIDATION FUNCTIONS =====
+            function validateForm() {
+                let isValid = true;
+                
+                // Validate phone number
+                if (!validatePhone(phoneInput.value)) {
+                    showError(phoneInput, 'Please enter a valid 10-digit phone number');
+                    isValid = false;
+                }
+                
+                // Validate required fields
+                const requiredFields = bookingForm.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        showError(field, 'This field is required');
+                        isValid = false;
+                    }
+                });
+                
+                return isValid;
+            }
+
+            function validatePhone(phone) {
+                const cleaned = phone.replace(/\D/g, '');
+                return cleaned.length === 10;
+            }
+
+            function formatPhoneNumber(phone) {
+                const cleaned = phone.replace(/\D/g, '');
+                const match = cleaned.match(/^(\d{0,3})(\d{0,3})(\d{0,4})$/);
+                if (match) {
+                    let formatted = '';
+                    if (match[1]) formatted += '(' + match[1];
+                    if (match[2]) formatted += ') ' + match[2];
+                    if (match[3]) formatted += '-' + match[3];
+                    return formatted;
+                }
+                return phone;
+            }
+
+            // ===== UI HELPER FUNCTIONS =====
+            function showError(input, message) {
+                clearError(input);
+                input.classList.add('error');
+                
+                if (input === phoneInput) {
+                    phoneError.textContent = message;
+                    phoneError.classList.add('show');
+                } else {
+                    const error = document.createElement('div');
+                    error.className = 'error-message show';
+                    error.textContent = message;
+                    input.parentNode.appendChild(error);
+                }
+                
+                input.focus();
+            }
+
+            function clearError(input) {
+                input.classList.remove('error');
+                if (input === phoneInput) {
+                    phoneError.textContent = '';
+                    phoneError.classList.remove('show');
+                } else {
+                    const error = input.parentNode.querySelector('.error-message');
+                    if (error) {
+                        error.remove();
+                    }
+                }
+            }
+
+            function showLoading(show) {
+                submitBtn.disabled = show;
+                btnText.textContent = show ? 'Sending Request...' : 'Book Now - Get Instant Confirmation';
+                spinner.classList.toggle('hidden', !show);
+            }
+
+            function showNotification(message, type) {
+                const existingNotif = document.querySelector('.notification');
+                if (existingNotif) existingNotif.remove();
+                
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <span class="icon">${type === 'success' ? '✓' : '!'}</span>
+                    <span class="message">${message}</span>
+                `;
+                
+                document.body.appendChild(notification);
+                setTimeout(() => {
+                    notification.classList.add('fade-out');
+                    setTimeout(() => notification.remove(), 300);
+                }, 5000);
+            }
+
+            // Handle success/error parameters in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                showNotification('Thank you! Your booking request has been sent. We\'ll contact you shortly!', 'success');
+            }
+            if (urlParams.has('error')) {
+                showNotification('There was an issue sending your request. Please call us directly at 917-708-4133', 'error');
+            }
+        });
+    </script>
+</body>
+</html>
