@@ -84,16 +84,111 @@
 
         /* Hero Image Below Navbar */
         .hero-image-section {
+            position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
             overflow: hidden;
         }
 
-        .hero-image-section img {
+        .hero-slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            position: relative;
+            width: 33.333%;
+            height: 100%;
+        }
+
+        .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.8); /* Darken the image slightly */
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .slide-content p {
+            font-size: 1.5rem;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .prev {
+            left: 1rem;
+        }
+
+        .next {
+            right: 1rem;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dot.active {
+            background: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 1rem;
+            }
+
+            .slider-btn {
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
         }
 
         /* ===== TAB BUTTONS ===== */
@@ -418,7 +513,7 @@
             flex: 1;
             min-width: 250px;
             max-width: 300px;
-            background: #FFA500; /* Taxi yellow card */
+            background: #eda725ea; /* Taxi yellow card */
             color: #000; /* Black text */
             box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3); /* Yellow shadow */
         }
@@ -631,7 +726,32 @@
 
     <!-- Hero Image Below Navbar -->
     <div class="hero-image-section">
-        <img src="assets/images/SET4.jpeg" alt="Luxury taxi vehicle">
+        <div class="hero-slider">
+            <div class="slide">
+                <img src="assets/images/SET4.jpeg" alt="Luxury taxi vehicle">
+                <div class="slide-content">
+                    <h2>Premium NYC Transportation</h2>
+                    <p>Your trusted partner for reliable rides</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/SET6.png" alt="Professional service">
+                <div class="slide-content">
+                    <h2>Professional Service</h2>
+                    <p>Experienced drivers at your service</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="assets/images/car.jpeg" alt="Airport transfers">
+                <div class="slide-content">
+                    <h2>Medical Services</h2>
+                    <p>Reliable rides to all NYC airports</p>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev">❮</button>
+        <button class="slider-btn next">❯</button>
+        <div class="slider-dots"></div>
     </div>
 
     <!-- Tab Buttons -->
@@ -776,22 +896,63 @@
 
     <!-- Company Highlights -->
     <section class="highlights">
-        <div class="highlight-card">
+    <div class="highlight-card">
+        <div class="highlight-front">
             <div class="highlight-icon">🏆</div>
             <h3>5-Star Rated</h3>
             <p>Rated 4.9/5 by 500+ customers</p>
+            <button class="read-more-btn">Read More</button>
         </div>
-        <div class="highlight-card">
+        <div class="highlight-back">
+            <h4>Why Customers Love Us</h4>
+            <ul class="highlight-details">
+                <li>✓ Outstanding customer service</li>
+                <li>✓ Punctual pickups</li>
+                <li>✓ Professional drivers</li>
+                <li>✓ Clean vehicles</li>
+            </ul>
+            <button class="close-btn">←</button>
+        </div>
+    </div>
+
+    <div class="highlight-card">
+        <div class="highlight-front">
             <div class="highlight-icon">⏱️</div>
             <h3>24/7 Service</h3>
             <p>Available anytime, even holidays</p>
+            <button class="read-more-btn">Read More</button>
         </div>
-        <div class="highlight-card">
+        <div class="highlight-back">
+            <h4>Always There For You</h4>
+            <ul class="highlight-details">
+                <li>✓ Round-the-clock availability</li>
+                <li>✓ Holiday service</li>
+                <li>✓ Emergency pickups</li>
+                <li>✓ Instant booking confirmation</li>
+            </ul>
+            <button class="close-btn">←</button>
+        </div>
+    </div>
+
+    <div class="highlight-card">
+        <div class="highlight-front">
             <div class="highlight-icon">🛡️</div>
             <h3>Fully Licensed</h3>
             <p>TLC-licensed vehicles & drivers</p>
+            <button class="read-more-btn">Read More</button>
         </div>
-    </section>
+        <div class="highlight-back">
+            <h4>Safety & Compliance</h4>
+            <ul class="highlight-details">
+                <li>✓ TLC-licensed drivers</li>
+                <li>✓ Regularly inspected vehicles</li>
+                <li>✓ Full insurance coverage</li>
+                <li>✓ Background-checked staff</li>
+            </ul>
+            <button class="close-btn">←</button>
+        </div>
+    </div>
+</section>
 
     <!-- Key Services Preview -->
     <section class="services-preview">
@@ -1035,6 +1196,72 @@
             if (urlParams.has('error')) {
                 showNotification('There was an issue sending your request. Please call us directly at 917-708-4133', 'error');
             }
+
+            // Add this to your existing JavaScript
+            const slider = document.querySelector('.hero-slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const dotsContainer = document.querySelector('.slider-dots');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            // Create dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll('.dot');
+
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlider();
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Auto-slide
+            setInterval(nextSlide, 5000);
+
+            // Touch events for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            slider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (touchStartX - touchEndX > 50) {
+                    nextSlide();
+                } else if (touchEndX - touchStartX > 50) {
+                    prevSlide();
+                }
+            });
         });
     </script>
 </body>
